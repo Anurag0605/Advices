@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="stylesheet" href="https://fonts.google.com/specimen/Manrope">
+  
+  <title>Frontend Mentor | Advice generator app</title>
+
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      background-color:hsl(218, 23%, 16%);      
+      /* height: 100%;
+      width: 100%; */
+      font-family: "Manrope";
+      font-family: 'Manrope';
+
+    }
+    .attribution{
+      border:3px solid hsl(217, 19%, 38%);
+      background-color:hsl(217, 19%, 24%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      /* height: 100%; */
+      margin-top: auto;
+      font-size: 0.9em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 1em;
+      border-radius: 30px;
+      
+    }
+
+    p{
+      display: inline;
+      color:hsl(150, 100%, 66%);
+      text-align: center;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .container{
+      height: 100%;
+      width: 100%;
+      
+      /* height: 100%; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      position: absolute;
+           /* inner white */
+      
+    }
+
+    #adn{
+      font-size: 28px;
+      font-weight: 800;
+      color: aliceblue;
+      
+    }
+
+    .dice{
+      position: absolute;
+      height: 4em;
+      width: 4em;
+      border-radius: 50%;
+      /* border: 2px solid red; */
+      background-color: aquamarine;
+      margin-top: 35em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 1.7s all;
+    }
+
+.dice:hover{
+  box-shadow: inset 0 0 50px #fff,      /* inner white */
+    inset 20px 0 80px #f0f,   /* inner left magenta short */
+    inset -20px 0 80px #0ff,  /* inner right cyan short */
+    inset 20px 0 300px rgb(236, 13, 236),  /* inner left magenta broad */
+    inset -20px 0 300px #0ff, /* inner right cyan broad */
+    0 0 50px #fff,            /* outer white */
+    -10px 0 80px rgb(252, 96, 231),        /* outer left magenta */
+    10px 0 80px #0ff;
+    transform: scale(1.3);
+}
+
+    @media (min-width:320px)  {
+      .container{
+      height: 100%;
+      width: 100%;
+      
+      /* height: 100%; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      position: absolute;
+    }
+
+    .attribution{
+      border:2px solid hsl(218, 34%, 31%);
+      background-color:hsl(217, 19%, 24%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 70%;
+      /* height: 100%; */
+      margin-top: auto;
+      font-size: 0.9em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 1em;
+      /* margin-left: 2em; */
+      border-radius: 20px;
+    }
+
+    #divider{
+      transform: scale(0.6);
+    }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="attribution">
+    <p>A D V I C E # <span id="adid"></span>
+    <p id="adn">
+    <span>"</span><span id="ad"></span><span>"</span>
+  </p>
+  <svg id="divider" width="444" height="16" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path fill="#4F5D74" d="M0 8h196v1H0zM248 8h196v1H248z"/><g transform="translate(212)" fill="#CEE3E9"><rect width="6" height="16" rx="3"/><rect x="14" width="6" height="16" rx="3"/></g></g></svg>
+
+  <br>
+  <br>
+
+
+
+  <div class="dice">
+     <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path d="M20 0H4a4.005 4.005 0 0 0-4 4v16a4.005 4.005 0 0 0 4 4h16a4.005 4.005 0 0 0 4-4V4a4.005 4.005 0 0 0-4-4ZM7.5 18a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm4.5 4.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm0-9a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z" fill="#202733"/></svg>
+    
+  </div>
+
+ 
+  </div>
+</div>
+
+
+
+
+  <script>
+    
+    async function getData(){
+      // url="	https://api.adviceslip.com/advice"
+      // fetch(url).then((response)=>{
+      //   return response.json();
+
+      // }).then((data)=>{
+      //   console.log(data["id"]);
+      // })
+      const api_url="https://api.adviceslip.com/advice";
+      const response= await fetch(api_url);
+      const data=await response.json();
+      console.log(data);
+      const {id , advice}=data.slip
+      console.log(advice);
+      document.getElementById("adid").textContent=id;
+      document.getElementById("ad").textContent=advice;
+
+    }
+    getData();
+  
+  const dice=document.querySelector(".dice")
+  dice.addEventListener("click",getData)
+
+    
+
+    
+  </script>
+
+</body>
+
+</html>
